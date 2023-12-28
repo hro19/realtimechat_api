@@ -3,7 +3,10 @@ class MessagesController < ApplicationController
     room = Room.find(params[:room_id])
     messages = room.messages.limit(20)
 
-    render json: messages, status: :ok
+    render json: {
+      messages: messages,
+      room: room,
+    }, status: :ok
   end
 
   def create
